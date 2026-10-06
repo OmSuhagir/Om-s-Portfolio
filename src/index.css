@@ -1,0 +1,356 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   Om Yogesh Suhagir - 3D Cyber Neon Purple Portfolio Design System
+   ========================================================================== */
+
+:root {
+  /* Color Tokens */
+  --bg-dark: #05020c;
+  --bg-darker: #020106;
+  --bg-card: rgba(18, 9, 36, 0.72);
+  --bg-card-hover: rgba(28, 14, 56, 0.88);
+  --bg-glass: rgba(168, 85, 247, 0.04);
+  --bg-glass-border: rgba(168, 85, 247, 0.22);
+  --bg-glass-hover-border: rgba(217, 70, 239, 0.6);
+
+  /* Neon Accents */
+  --neon-purple: #a855f7;
+  --neon-violet: #8b5cf6;
+  --neon-magenta: #e879f9;
+  --neon-fuchsia: #d946ef;
+  --neon-cyan: #38bdf8;
+  --neon-amber: #fbbf24;
+
+  /* Typography */
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Text Colors */
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --text-highlight: #e0e7ff;
+
+  /* Glow Shadows */
+  --glow-purple-sm: 0 0 15px rgba(168, 85, 247, 0.35);
+  --glow-purple-md: 0 0 30px rgba(168, 85, 247, 0.5), 0 0 60px rgba(168, 85, 247, 0.2);
+  --glow-purple-lg: 0 0 45px rgba(168, 85, 247, 0.65), 0 0 90px rgba(217, 70, 239, 0.35);
+  --glow-magenta-sm: 0 0 20px rgba(232, 121, 249, 0.45);
+  --glow-cyan-sm: 0 0 15px rgba(56, 189, 248, 0.4);
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base Reset & Core Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: auto; /* Handled smoothly by Lenis */
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  min-height: 100vh;
+  line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--neon-purple), var(--neon-magenta));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-magenta);
+}
+
+/* Selection */
+::selection {
+  background: rgba(168, 85, 247, 0.5);
+  color: #ffffff;
+}
+
+/* Typography Helpers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+p {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* Cyber Neon Gradient Text */
+.gradient-text-purple {
+  background: linear-gradient(135deg, #ffffff 0%, #c084fc 40%, #e879f9 75%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-neon {
+  background: linear-gradient(90deg, #d946ef 0%, #8b5cf6 50%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glassmorphism Cards */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--bg-glass-border);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(217, 70, 239, 0.6), transparent);
+  opacity: 0.6;
+}
+
+.glass-panel:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--bg-glass-hover-border);
+  box-shadow: var(--glow-purple-sm), 0 12px 40px rgba(0, 0, 0, 0.6);
+  transform: translateY(-4px);
+}
+
+/* Cyber Buttons */
+.cyber-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 28px;
+  background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  border-radius: 12px;
+  box-shadow: var(--glow-purple-sm);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.cyber-btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--glow-purple-md);
+  filter: brightness(1.15);
+}
+
+.cyber-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 26px;
+  background: rgba(168, 85, 247, 0.1);
+  color: var(--text-main);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.cyber-btn-secondary:hover {
+  background: rgba(168, 85, 247, 0.22);
+  border-color: var(--neon-magenta);
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.35);
+  transform: translateY(-2px);
+}
+
+/* Badge Tags */
+.cyber-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  border-radius: 9999px;
+  background: rgba(168, 85, 247, 0.12);
+  color: #d8b4fe;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  backdrop-filter: blur(6px);
+  transition: var(--transition-fast);
+}
+
+.cyber-badge:hover {
+  background: rgba(168, 85, 247, 0.25);
+  border-color: var(--neon-magenta);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Pulse Dot */
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 10px #10b981;
+  animation: pulse-ring 2s infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* Background Cyber Grid Overlay */
+.cyber-grid-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  background-image: 
+    linear-gradient(rgba(139, 92, 246, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 85%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 85%);
+}
+
+/* Ambient Radial Glow Spots */
+.ambient-glow-1 {
+  position: fixed;
+  top: 10%;
+  left: 5%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.16) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(60px);
+}
+
+.ambient-glow-2 {
+  position: fixed;
+  bottom: 15%;
+  right: 5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(217, 70, 239, 0.14) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(70px);
+}
+
+/* Layout Utilities */
+.portfolio-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 10;
+}
+
+.section-padding {
+  padding: 120px 0;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 75px 0;
+  }
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--neon-magenta);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  max-width: 620px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  color: var(--text-muted);
+}
