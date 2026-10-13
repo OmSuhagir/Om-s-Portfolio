@@ -64,8 +64,6 @@ export const portfolioData = {
     frontendAnd3D: [
       { name: "React.js", level: 92 },
       { name: "Next.js", level: 82 },
-      { name: "Three.js / WebGL", level: 80 },
-      { name: "GSAP Animations", level: 85 },
       { name: "HTML5 & Modern CSS", level: 95 },
       { name: "Responsive UI/UX", level: 90 },
     ],
